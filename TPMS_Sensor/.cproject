@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="it.baeyens.arduino.core.toolChain.release.227407177">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="it.baeyens.arduino.core.toolChain.release.227407177" moduleId="org.eclipse.cdt.core.settings" name="Release">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.MakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}" buildProperties="" description="" id="it.baeyens.arduino.core.toolChain.release.227407177" name="Release" parent="org.eclipse.cdt.build.core.emptycfg">
+					<folderInfo id="it.baeyens.arduino.core.toolChain.release.227407177.548122864" name="/" resourcePath="">
+						<toolChain id="it.baeyens.arduino.core.toolChain.release.1839804691" name="Arduino Toolchain" superClass="it.baeyens.arduino.core.toolChain.release">
+							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="it.baeyens.arduino.targetplatform.817100284" name="Arduino Target" osList="all" superClass="it.baeyens.arduino.targetplatform"/>
+							<builder buildPath="${workspace_loc:/TPMS_Sensor}/Release" id="it.baeyens.arduino.sketch.builder.1940971058" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Arduino sketch builder" superClass="it.baeyens.arduino.sketch.builder"/>
+							<tool id="it.baeyens.arduino.tool.sketch.compiler.cpp.568604603" name="Arduino C++ Compiler" superClass="it.baeyens.arduino.tool.sketch.compiler.cpp">
+								<option id="it.baeyens.arduino.compiler.cpp.sketch.option.incpath.277584303" name="Include Paths (-I)" superClass="it.baeyens.arduino.compiler.cpp.sketch.option.incpath" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TPMS_Sensor/arduino/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TPMS_Sensor/arduino/variant}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TPMS_Sensor/Libraries/RF22Lib}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TPMS_Sensor/Libraries/SPI}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TPMS_Sensor/Libraries/crypto}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TPMS_Sensor/Libraries/encoding}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TPMS_Sensor/Libraries/myutil}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TPMS_Sensor/Libraries/tpms_struct}&quot;"/>
+								</option>
+								<inputType id="it.baeyens.arduino.compiler.cpp.sketch.input.1214313424" name="CPP source files" superClass="it.baeyens.arduino.compiler.cpp.sketch.input"/>
+							</tool>
+							<tool id="it.baeyens.arduino.tool.compiler.c.876827256" name="Arduino C Compiler" superClass="it.baeyens.arduino.tool.compiler.c">
+								<option id="it.baeyens.arduino.compiler.c.sketch.option.incpath.141552509" name="Include Paths (-I)" superClass="it.baeyens.arduino.compiler.c.sketch.option.incpath" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TPMS_Sensor/arduino/core}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TPMS_Sensor/arduino/variant}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TPMS_Sensor/Libraries/RF22Lib}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TPMS_Sensor/Libraries/SPI}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TPMS_Sensor/Libraries/crypto}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TPMS_Sensor/Libraries/encoding}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TPMS_Sensor/Libraries/myutil}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/TPMS_Sensor/Libraries/tpms_struct}&quot;"/>
+								</option>
+								<inputType id="it.baeyens.arduino.compiler.c.sketch.input.82879776" name="C Source Files" superClass="it.baeyens.arduino.compiler.c.sketch.input"/>
+							</tool>
+							<tool id="it.baeyens.arduino.tool.sketch.compiler.s.194877920" name="Arduino Assembler" superClass="it.baeyens.arduino.tool.sketch.compiler.s"/>
+							<tool id="it.baeyens.arduino.tool.ar.480372514" name="Arduino archiver" superClass="it.baeyens.arduino.tool.ar"/>
+							<tool id="it.baeyens.arduino.tool.combine.884933489" name="Arduino combiner" superClass="it.baeyens.arduino.tool.combine"/>
+							<tool id="it.baeyens.arduino.tool.objcopy.eep.799067015" name="Arduino tool Create eeprom" superClass="it.baeyens.arduino.tool.objcopy.eep"/>
+							<tool id="it.baeyens.arduino.tool.objcopy.flash.42917646" name="Arduino tool Create hex" superClass="it.baeyens.arduino.tool.objcopy.flash"/>
+							<tool id="it.baeyens.arduino.tool.size.122415406" name="Arduino tool Print Size" superClass="it.baeyens.arduino.tool.size"/>
+						</toolChain>
+					</folderInfo>
+					<sourceEntries>
+						<entry excluding="Libraries/*/?xamples|Libraries/*/?xtras" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+					</sourceEntries>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="TPMS_Sensor.null.347736652" name="TPMS_Sensor"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="refreshScope"/>
+</cproject>
