@@ -126,8 +126,14 @@ void loop() {
 				unsigned long start_time = 0, end_time = 0;
 #ifdef CRYPTO
 				start_time = micros();
-				//				decrypt_tea(data, KEY_TEA);
+#if defined(KLEIN80)
 				decrypt_klein80(data, TPMS_PKT_LEN - 1, k_s[0], plaintext);
+#elif defined(KATAN32)
+				initKey(k_s[0], 254);
+				decrypt_katan32(data, TPMS_PKT_LEN - 1, 254, plaintext);
+#else
+#error "No block cipher defined!"
+#endif
 				plaintext[TPMS_PKT_LEN - 1] = data[TPMS_PKT_LEN - 1];
 				end_time = micros();
 #endif // CRYPTO
@@ -257,12 +263,14 @@ void sendConfirmation(uint8_t idx) {
 
 void updateKey(int index) {
 	uint8_t output[16] = { 0 }; //128bit
-	//sid = truncate(E(M_3, 0))
-//	uint8_t kk[KEY_LEN] = { 0 };
-//	uint8_t sid[sizeof(MSG3) - BLOCK_SIZE] = { 0 };
-//	encrypt_klein80((uint8_t*) &MSG3, sizeof(MSG3) - BLOCK_SIZE, kk, sid);
-	//k_s[index] = E(sid, kll);
+#if defined(KLEIN80)
 	encrypt_klein80((uint8_t*) &MSG3, sizeof(output), k_ll[index], output);
+#elif defined(KATAN32)
+	initKey(k_ll[index], 254);
+	encrypt_katan32((uint8_t*) &MSG3, sizeof(output), 254, output);
+#else
+#error "No block cipher defined!"
+#endif
 	my_memcpy(k_s[index], output, KEY_LEN);
 
 	my_print_hex(k_s[index], KEY_LEN);
@@ -298,7 +306,14 @@ void loadAuthKeys() {
 	for (int i = 0; i < NUM_SENSORS; i++) {
 		uint8_t input[16] = { 0 }, output[16] = { 0 };
 
+#if defined(KLEIN80)
 		encrypt_klein80(input, 16, k_ll[i], output);
+#elif defined(KATAN32)
+		initKey(k_ll[i], 254);
+		encrypt_katan32(input, 16, 254, output);
+#else
+#error "No block cipher defined!"
+#endif
 		my_memcpy(k_a[i], output, KEY_LEN);
 
 		Serial.print("K");
