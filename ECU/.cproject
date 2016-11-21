@@ -23,10 +23,10 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ECU/arduino/variant}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ECU/Libraries/SPI}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ECU/Libraries/RF22Lib}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ECU/Libraries/crypto}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ECU/Libraries/encoding}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ECU/Libraries/myutil}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ECU/Libraries/tpms_struct}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ECU/Libraries/crypto}&quot;"/>
 								</option>
 								<inputType id="it.baeyens.arduino.compiler.cpp.sketch.input.573235564" name="CPP source files" superClass="it.baeyens.arduino.compiler.cpp.sketch.input"/>
 							</tool>
@@ -36,10 +36,10 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ECU/arduino/variant}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ECU/Libraries/SPI}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ECU/Libraries/RF22Lib}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ECU/Libraries/crypto}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ECU/Libraries/encoding}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ECU/Libraries/myutil}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ECU/Libraries/tpms_struct}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/ECU/Libraries/crypto}&quot;"/>
 								</option>
 								<inputType id="it.baeyens.arduino.compiler.c.sketch.input.403378983" name="C Source Files" superClass="it.baeyens.arduino.compiler.c.sketch.input"/>
 							</tool>
