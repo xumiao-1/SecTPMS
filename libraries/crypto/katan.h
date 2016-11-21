@@ -25,17 +25,14 @@ typedef uint64_t u64;
  */
 //#define encrypt_katan32(plain, len, key, cipher) katan32_encrypt((plain), (key), 254, (cipher))
 //#define decrypt_katan32(cipher, len, key, plain) katan32_decrypt((cipher), (key), 254, (plain))
-
-
-
-void initKey(uint8_t* key, uint8_t rounds);
-
-void encrypt_katan32(const uint8_t *plain, uint8_t len, uint16_t rounds, uint8_t *cipher);
-void decrypt_katan32(const uint8_t* cipher, uint8_t len, uint16_t rounds, uint8_t* plain);
-
-void katan32_encrypt_rounds(const uint8_t *plain, const uint8_t *key,
+void encrypt_katan32(const uint8_t *plain, uint8_t len, const uint8_t *key,
 		uint16_t rounds, uint8_t *cipher);
-void katan32_decrypt_rounds(const uint8_t *cipher, const uint8_t *key,
+void decrypt_katan32(const uint8_t *cipher, uint8_t len, const uint8_t *key,
 		uint16_t rounds, uint8_t *plain);
+
+//static void katan32_encrypt_rounds(const uint8_t *plain, const uint8_t *key,
+//		uint16_t rounds, uint8_t *cipher);
+//static void katan32_decrypt_rounds(const uint8_t *cipher, const uint8_t *key,
+//		uint16_t rounds, uint8_t *plain);
 
 #endif //_KATAN_H_
