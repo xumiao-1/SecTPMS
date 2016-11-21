@@ -110,9 +110,12 @@ void loop() {
 		unsigned long start_time = 0, end_time = 0;
 #ifdef CRYPTO
 		start_time = micros();
-//		encrypt_tea(data, KEY_TEA); // s: 552us, r: 516us
-//		encrypt_klein80(data, KEY_KLEIN_80, cipher);// s: 212us, r: 360us
+#if defined(KLEIN80)
 		encrypt_klein80(data, TPMS_PKT_LEN - 1, k_s[IDX_SENSOR], cipher); // s: 212us, r: 360us
+#elif defined(KATAN32)
+		initKey(k_s[IDX_SENSOR], 254);
+		encrypt_katan32(data, TPMS_PKT_LEN - 1, 254, cipher);
+#endif
 		cipher[TPMS_PKT_LEN - 1] = data[TPMS_PKT_LEN - 1];
 		end_time = micros();
 #endif // CRYPTO
@@ -125,7 +128,7 @@ void loop() {
 		// diff. manchester encoding (20 bytes)
 		uint8_t encoded[ENCODED_MSG_LEN];
 		// head
-		encoded[0] = {0x03};
+		encoded[0] = 0x03;
 		encoded[1] = (cipher[0] >> 7) ? 0xF3 : 0xF2;
 		// body
 		encode_dmanchester(cipher, encoded + 2, TPMS_PKT_LEN, 1);
@@ -327,12 +330,12 @@ void rcvConfirm() {
 
 void updateKey() {
 	uint8_t output[16] = { 0 }; //128bit
-	//sid = truncate(E(M_3, 0))
-//	uint8_t kk[KEY_LEN] = { 0 };
-//	uint8_t sid[sizeof(MSG3) - BLOCK_SIZE] = { 0 };
-//	encrypt_klein80((uint8_t*) &MSG3, sizeof(MSG3) - BLOCK_SIZE, kk, sid);
-	//k_s[index] = E(sid, kll);
+#if defined(KLEIN80)
 	encrypt_klein80((uint8_t*) &MSG3, sizeof(output), k_ll[IDX_SENSOR], output);
+#elif defined(KATAN32)
+	initKey(k_ll[IDX_SENSOR], 254);
+	encrypt_katan32((uint8_t*) &MSG3, sizeof(output), 254, output);
+#endif
 	my_memcpy(k_s[IDX_SENSOR], output, KEY_LEN);
 }
 
@@ -357,7 +360,12 @@ void loadMasterKey() {
 void loadAuthenKey() {
 	Serial.println("loading authentication key...");
 	uint8_t input[16] = { 0 }, output[16] = { 0 };
+#if defined(KLEIN80)
 	encrypt_klein80(input, 16, k_ll[IDX_SENSOR], output);
+#elif defined(KATAN32)
+	initKey(k_ll[IDX_SENSOR], 254);
+	encrypt_katan32(input, 16, 254, output);
+#endif
 	my_memcpy(k_a[IDX_SENSOR], output, KEY_LEN);
 	my_print_hex(k_a[IDX_SENSOR], KEY_LEN);
 	Serial.println();
