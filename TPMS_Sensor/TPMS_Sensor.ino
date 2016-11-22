@@ -43,11 +43,13 @@ uint8_t recvMsg(uint8_t *buff, uint8_t lenn);
 RF22 rf22;
 
 // TPMS messages
-const uint8_t TPMS_MSG[][TPMS_PKT_LEN] = { { 0x4A, 0x9E, 0x3A, 0x13, 0x8A, 0x75,
-		0x9E, 0x67, 0x40 }, { 0x4A, 0x9E, 0x3A, 0x14, 0x0A, 0xF5, 0x10, 0x61,
-		0x00 }, { 0x4A, 0x9E, 0x3A, 0x15, 0x8A, 0x75, 0x9D, 0x40, 0x40 }, {
-		0x4A, 0x9E, 0x3A, 0x16, 0x0A, 0xF5, 0x10, 0x6F, 0x00 }, { 0x4A, 0x9E,
-		0x3A, 0x17, 0x8A, 0x75, 0x9F, 0xE1, 0xC0 }, };
+const uint8_t TPMS_MSG[][TPMS_PKT_LEN] = {
+		{ 0x4A, 0x9E, 0x3A, 0x13, 0x8A, 0x75, 0x9E, 0x67, 0x40 },
+		{ 0x4A, 0x9E, 0x3A, 0x14, 0x0A, 0xF5, 0x10, 0x61, 0x00 },
+		{ 0x4A, 0x9E, 0x3A, 0x15, 0x8A, 0x75, 0x9D, 0x40, 0x40 },
+		{ 0x4A, 0x9E, 0x3A, 0x16, 0x0A, 0xF5, 0x10, 0x6F, 0x00 },
+		{ 0x4A, 0x9E, 0x3A, 0x17, 0x8A, 0x75, 0x9F, 0xE1, 0xC0 },
+};
 
 //unsigned long plain[2];
 //unsigned long cipher[2];
@@ -113,8 +115,7 @@ void loop() {
 #if defined(KLEIN80)
 		encrypt_klein80(data, TPMS_PKT_LEN - 1, k_s[IDX_SENSOR], cipher); // s: 212us, r: 360us
 #elif defined(KATAN32)
-		initKey(k_s[IDX_SENSOR], 254);
-		encrypt_katan32(data, TPMS_PKT_LEN - 1, 254, cipher);
+		encrypt_katan32(data, TPMS_PKT_LEN - 1, k_s[IDX_SENSOR], 254, cipher);
 #endif
 		cipher[TPMS_PKT_LEN - 1] = data[TPMS_PKT_LEN - 1];
 		end_time = micros();
@@ -333,8 +334,7 @@ void updateKey() {
 #if defined(KLEIN80)
 	encrypt_klein80((uint8_t*) &MSG3, sizeof(output), k_ll[IDX_SENSOR], output);
 #elif defined(KATAN32)
-	initKey(k_ll[IDX_SENSOR], 254);
-	encrypt_katan32((uint8_t*) &MSG3, sizeof(output), 254, output);
+	encrypt_katan32((uint8_t*) &MSG3, sizeof(output), k_ll[IDX_SENSOR], 254, output);
 #endif
 	my_memcpy(k_s[IDX_SENSOR], output, KEY_LEN);
 }
@@ -363,8 +363,7 @@ void loadAuthenKey() {
 #if defined(KLEIN80)
 	encrypt_klein80(input, 16, k_ll[IDX_SENSOR], output);
 #elif defined(KATAN32)
-	initKey(k_ll[IDX_SENSOR], 254);
-	encrypt_katan32(input, 16, 254, output);
+	encrypt_katan32(input, 16, k_ll[IDX_SENSOR], 254, output);
 #endif
 	my_memcpy(k_a[IDX_SENSOR], output, KEY_LEN);
 	my_print_hex(k_a[IDX_SENSOR], KEY_LEN);

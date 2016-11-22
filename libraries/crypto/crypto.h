@@ -8,8 +8,8 @@
 #ifndef CRYPTO_H_
 #define CRYPTO_H_
 
-#define KLEIN80
-//#define KATAN32
+//#define KLEIN80
+#define KATAN32
 
 #if defined(PRESENT) /* PRESENT */
 #include "present.h"

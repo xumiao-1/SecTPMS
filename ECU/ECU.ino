@@ -103,9 +103,6 @@ void loop() {
 
 			// Should be a message for us now
 			uint8_t recv_data[ENCODED_MSG_LEN];
-//			;
-//			uint8_t len, from, to;
-//			if (rf22.recvfrom(recv_data, &len, &from, &to)) {
 			if (recvMsg(recv_data, ENCODED_MSG_LEN) == ENCODED_MSG_LEN) {
 				Serial.println("Got message:");
 				my_print_hex(recv_data, ENCODED_MSG_LEN);
@@ -129,8 +126,7 @@ void loop() {
 #if defined(KLEIN80)
 				decrypt_klein80(data, TPMS_PKT_LEN - 1, k_s[0], plaintext);
 #elif defined(KATAN32)
-				initKey(k_s[0], 254);
-				decrypt_katan32(data, TPMS_PKT_LEN - 1, 254, plaintext);
+				decrypt_katan32(data, TPMS_PKT_LEN - 1, k_s[0], 254, plaintext);
 #else
 #error "No block cipher defined!"
 #endif
@@ -158,7 +154,6 @@ void loop() {
 
 				Serial.println("\r\n\r\n\r\n");
 			}
-//			}
 		}
 	}
 }
@@ -266,8 +261,7 @@ void updateKey(int index) {
 #if defined(KLEIN80)
 	encrypt_klein80((uint8_t*) &MSG3, sizeof(output), k_ll[index], output);
 #elif defined(KATAN32)
-	initKey(k_ll[index], 254);
-	encrypt_katan32((uint8_t*) &MSG3, sizeof(output), 254, output);
+	encrypt_katan32((uint8_t*) &MSG3, sizeof(output), k_ll[index], 254, output);
 #else
 #error "No block cipher defined!"
 #endif
@@ -309,8 +303,7 @@ void loadAuthKeys() {
 #if defined(KLEIN80)
 		encrypt_klein80(input, 16, k_ll[i], output);
 #elif defined(KATAN32)
-		initKey(k_ll[i], 254);
-		encrypt_katan32(input, 16, 254, output);
+		encrypt_katan32(input, 16, k_ll[i], 254, output);
 #else
 #error "No block cipher defined!"
 #endif
