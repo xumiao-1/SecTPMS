@@ -29,7 +29,7 @@ void cbc_mac(uint8_t *msg, uint8_t len, uint8_t *key, uint8_t *mac) {
 #if defined(KLEIN80)
 		klein80_encrypt_rounds(input, key, 1, mac);
 #elif defined(KATAN32)
-		katan32_encrypt_rounds(input, key, 1, mac);
+		encrypt_katan32(input, BLOCK_SIZE, key, 1, mac);
 #else
 #error "No block cipher defined!"
 #endif
